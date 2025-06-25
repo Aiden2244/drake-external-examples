@@ -10,11 +10,14 @@
   "timezone": "America/New_York",
   "enabledManagers": [
     "pip_requirements",
-    "poetry"
+    "poetry",
+    "bazel"
   ],
   "includePaths": [
     "drake_pip/**",
-    "drake_poetry/**"
+    "drake_poetry/**",
+    "drake_bazel_download/**",
+    "drake_bazel_external/**"
   ],
   "pip_requirements": {
     "managerFilePatterns": [
@@ -28,28 +31,11 @@
   },
   "packageRules": [
     {
-      "matchManagers": [
-        "pip_requirements"
-      ],
-      "matchFileNames": [
-        "drake_pip/requirements.txt"
-      ],
-      "semanticCommitType": "chore",
-      "semanticCommitScope": "pip-deps"
-    },
-    {
-      "matchManagers": [
-        "poetry"
-      ],
-      "matchFileNames": [
-        "drake_poetry/pyproject.toml"
-      ],
-      "semanticCommitType": "chore",
-      "semanticCommitScope": "poetry-deps"
-    },
-    {
       "matchPackageNames": [
-        "drake"
+        "drake",
+        "rules_python",
+        "rules_cc",
+        "bazel"
       ],
       "rangeStrategy": "bump"
     }
